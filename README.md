@@ -77,7 +77,7 @@ C => Add GetDoc() function to your MainFrame Class.
 
 	if (pChild)
 	{
-		CECheckerAppDoc* pDoc = (CECheckerAppDoc*)(pChild->GetActiveDocument());
+		CCViewsFormsDoc* pDoc = (CCViewsFormsDoc*)(pChild->GetActiveDocument());
 		if (pDoc)
 		{
 			return pDoc;
