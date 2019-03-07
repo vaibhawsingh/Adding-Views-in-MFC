@@ -66,4 +66,26 @@ B => In MainFrame class the new event handler which gets added, add this code th
     ASSERT_VALID(pNewFrame);
     pNewTemplate->InitialUpdateFrame(pNewFrame, pDoc);
 
+C => Add GetDoc() function to your MainFrame Class.
 
+    CDocument* CMainFrame::GetDoc()
+    {
+	CMDIChildWnd* pChild = ((CMainFrame*)AfxGetMainWnd())->MDIGetActive();
+
+	if ((pChild == NULL) || !pChild->IsKindOf(RUNTIME_CLASS(CMDIChildWnd)))
+		return NULL;
+
+	if (pChild)
+	{
+		CECheckerAppDoc* pDoc = (CECheckerAppDoc*)(pChild->GetActiveDocument());
+		if (pDoc)
+		{
+			return pDoc;
+		}
+		else
+			return NULL;
+	}
+	else
+		return NULL;
+
+    }
